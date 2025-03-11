@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couple Name Generator</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .container {
+            background-color: #2a2a2a;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+        }
+        
+        h1 {
+            color: #f39c12;
+        }
+        
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        
+        input,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        input {
+            background-color: #444;
+            color: #ffffff;
+        }
+        
+        button {
+            background-color: #f39c12;
+            color: #1e1e1e;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            background-color: #4caf50;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Couple Name Generator</h1>
+        <label for="groom">Groom's Name:</label>
+        <input type="text" id="groom" placeholder="Enter Groom's Name">
+
+        <label for="bride">Bride's Name:</label>
+        <input type="text" id="bride" placeholder="Enter Bride's Name">
+
+        <button onclick="generateName()">Generate Couple Name</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function generateName() {
+            const groom = document.getElementById('groom').value.trim();
+            const bride = document.getElementById('bride').value.trim();
+
+            if (!groom || !bride) {
+                document.getElementById('result').innerText = "Please enter both names.";
+                return;
+            }
+
+            const groomPart = groom.slice(0, Math.ceil(groom.length / 2)).toUpperCase();
+            const bridePart = bride.slice(-Math.ceil(bride.length / 2)).toUpperCase();
+            const coupleName = groomPart + bridePart;
+
+            document.getElementById('result').innerText = `New Couple Name: ${coupleName}`;
+        }
+    </script>
+</body>
+
+</html>
